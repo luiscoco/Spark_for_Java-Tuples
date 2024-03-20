@@ -237,7 +237,7 @@ public class Util
 </project>
 ```
 
-We run the application with the following command:
+**How to run the application**:
 
 ```
 mvn compile exec:java "-Dexec.mainClass=com.virtualpairprogrammers.Main"
