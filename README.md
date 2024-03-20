@@ -16,7 +16,7 @@ However, when working with Spark in Java, you can utilize the **scala.Tuple2**, 
 
 These classes are fully interoperable with Java
 
-## 2. Sample 1
+## 2. Sample 1: Spark for Java (Tuples)
 
 Run VSCode and create the following project structure
 
@@ -246,3 +246,7 @@ mvn compile exec:java "-Dexec.mainClass=com.virtualpairprogrammers.Main"
 ![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/bbca2d1e-d02f-4716-ab99-3229da6e794f)
 
 ![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/189f9623-add4-4ee0-8c13-10cb16782b82)
+
+## 3. Sample 2: Spark for Java (Tuples)
+
+
