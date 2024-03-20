@@ -421,7 +421,14 @@ mvn install
 
 Then to run the application type this command:
 
-```
+We first navigate to the demo folder and the we execute the command
 
 ```
+PS C:\Spark for Java\Tuples\demo> & 'C:\Program Files\Java\jdk-11\bin\java.exe' -cp "target/demo-1.0-SNAPSHOT-jar-with-dependencies.jar" com.example.Main
+```
+
+![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/ff263480-1699-4520-8e60-347667751101)
+
+![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/fbd21019-992b-42d0-b936-2ffdbc50788d)
+
 
