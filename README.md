@@ -18,6 +18,36 @@ These classes are fully interoperable with Java
 
 ## 2. Sample 1: Spark for Java (Tuples)
 
+This Java code uses Apache Spark, a powerful open-source processing framework for large data sets, to perform a simple map operation
+
+Here's a brief overview of its components and what each part does:
+
+**Package Declaration**: package com.virtualpairprogrammers; This line declares the package name, which is used to organize the code into a namespace that avoids name conflicts
+
+**Imports**: The code imports necessary classes and interfaces from Java and Apache Spark libraries. For example, JavaRDD, JavaSparkContext, and SparkConf are Spark classes for resilient distributed datasets (RDDs), Spark context configuration, and context management, respectively
+
+**Class Declaration**: The Main class encapsulates the application logic
+
+**Main Method**: The main method is the entry point of the application. It performs the following tasks:
+
+- Initializes a list of integers (inputData) with values
+
+- Sets the logging level for Apache Spark to WARN using Log4j, reducing the verbosity of log messages
+
+- Configures Spark with a SparkConf object, setting the application name to "startingSpark" and the master to "local[*]", which means Spark will run locally with as many worker threads as logical cores on your machine
+
+- Initializes a JavaSparkContext (sc) with the Spark configuration. The context is used to interact with Spark's functionalities like creating RDDs
+
+- Creates an RDD (originalIntegers) from the inputData list using the parallelize method. RDDs are Spark's core abstraction for working with distributed datasets
+
+- Transforms the originalIntegers RDD into another RDD (sqrtRdd) using the map operation. This transformation applies a function to each element of the original RDD, in this case, creating a tuple containing the original number and its square root
+
+Executes an action (foreach) to print the square root of each number. Actions in Spark trigger computations on the RDDs
+
+Finally, closes the Spark context (sc.close()), releasing the resources
+
+In summary, this code demonstrates how to set up a basic Apache Spark application in Java, create an RDD from a collection, transform data within RDDs using map, and perform actions on RDDs
+
 Run VSCode and create the following project structure
 
 ![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/5607e80c-1e83-4f23-a95f-78111bed8e76)
