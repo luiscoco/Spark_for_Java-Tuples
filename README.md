@@ -52,7 +52,9 @@ In summary, this code demonstrates how to set up a basic Apache Spark applicatio
 
 **How to create the Java application**
 
-Run VSCode and create the following project structure
+Run VSCode and press **Ctrl+P** for creating a new Java with Maven project
+
+This is the project folders and files structure
 
 ![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/5607e80c-1e83-4f23-a95f-78111bed8e76)
 
@@ -193,6 +195,8 @@ public class Util
 }
 ```
 
+**VERY IMPORTANT NOTE**: the java version is **1.8** and should be set in the **JAVA_HOME** environmental variable
+
 **pom.xml**
 
 ```xml
@@ -283,4 +287,122 @@ mvn compile exec:java "-Dexec.mainClass=com.virtualpairprogrammers.Main"
 
 ## 3. Sample 2: Spark for Java (Tuples)
 
+Imagine you have a dataset of employee information and you want to process it to get the maximum salary in each department
 
+You could use tuples to hold pairs of department names and salaries, allowing you to perform operations like reductions or aggregations by department
+
+First, you need to set up a Spark session in your Java application. Then, you can create an RDD or Dataset containing tuples representing each employee's department and salary
+
+Finally, you can apply transformations and actions to get the desired result
+
+**How to create the Java application**
+
+Run VSCode and press **Ctrl+P** for creating a new Java with Maven project
+
+This is the project folders and files structure
+
+![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/9280f448-4798-4a5d-b95c-38bb405ca0c0)
+
+Input the source code
+
+**Main.java**
+
+```java
+package com.example;
+
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.PairFunction;
+import org.apache.spark.sql.SparkSession;
+import scala.Tuple2;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Initialize SparkSession
+        SparkSession spark = SparkSession
+                .builder()
+                .appName("Spark Tuples Example")
+                .config("spark.master", "local")
+                .getOrCreate();
+
+        JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
+
+        // Example data: list of employee department and salary
+        JavaRDD<String> employeeData = jsc.parallelize(java.util.Arrays.asList(
+                "Engineering,50000",
+                "Marketing,60000",
+                "Engineering,70000",
+                "HR,40000",
+                "Marketing,65000"
+        ));
+
+        // Map data to tuples of (Department, Salary)
+        JavaPairRDD<String, Integer> deptSalaries = employeeData.mapToPair(
+                (PairFunction<String, String, Integer>) s -> {
+                    String[] parts = s.split(",");
+                    return new Tuple2<>(parts[0], Integer.parseInt(parts[1]));
+                });
+
+        // Reduce by key to find max salary in each department
+        JavaPairRDD<String, Integer> maxSalariesByDept = deptSalaries.reduceByKey(Math::max);
+
+        // Collect and print results
+        maxSalariesByDept.collect().forEach(tuple ->
+                System.out.println(tuple._1 + " department's maximum salary: " + tuple._2));
+
+        // Stop the Spark context
+        jsc.stop();
+    }
+}
+```
+
+**VERY IMPORTANT NOTE**: the java version is **1.8** and should be set in the **JAVA_HOME** environmental variable
+
+**pom.xml**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.12</artifactId>
+            <version>3.1.2</version> <!-- Use the version suitable for your project -->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.12</artifactId>
+            <version>3.1.2</version> <!-- Use the version suitable for your project -->
+        </dependency>
+    </dependencies>
+<build>
+    <plugins>
+        <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.10.1</version> <!-- or newer version -->
+    <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+    </configuration>
+</plugin>
+    </plugins>
+</build>
+
+</project>
+```
