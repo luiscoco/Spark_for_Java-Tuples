@@ -50,6 +50,8 @@ Here's a brief overview of its components and what each part does:
 
 In summary, this code demonstrates how to set up a basic Apache Spark application in Java, create an RDD from a collection, transform data within RDDs using map, and perform actions on RDDs
 
+**How to create the Java application**
+
 Run VSCode and create the following project structure
 
 ![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/5607e80c-1e83-4f23-a95f-78111bed8e76)
