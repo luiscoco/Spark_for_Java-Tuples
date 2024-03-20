@@ -195,7 +195,7 @@ public class Util
 }
 ```
 
-**VERY IMPORTANT NOTE**: the java version is **1.8** and should be set in the **JAVA_HOME** environmental variable
+**VERY IMPORTANT NOTE**: set **java version 1.8** and should be set in the **JAVA_HOME** environmental variable and in the **PATH** variable
 
 **pom.xml**
 
@@ -358,7 +358,11 @@ public class Main {
 }
 ```
 
-**VERY IMPORTANT NOTE**: the java version is **1.8** and should be set in the **JAVA_HOME** environmental variable
+**VERY IMPORTANT NOTE**: set **java version 11** and should be set in the **JAVA_HOME** environmental variable and in the **PATH** variable
+
+![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/1ff49528-efc0-4849-aa32-2e789c90df63)
+
+![image](https://github.com/luiscoco/Spark_for_Java-Tuples/assets/32194879/9b42cbc0-24da-484f-a3fe-2c9315bb419a)
 
 **pom.xml**
 
@@ -374,8 +378,8 @@ public class Main {
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -391,17 +395,31 @@ public class Main {
         </dependency>
     </dependencies>
 <build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.10.1</version> <!-- or newer version -->
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-     </plugins>
+  <plugins>
+    <plugin>
+      <!-- Add maven assembly plugin to create a fat jar including all dependencies -->
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>com.example.Main</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+      <executions>
+        <execution>
+          <id>make-assembly</id> <!-- this is used for inheritance merges -->
+          <phase>package</phase> <!-- append to the packaging phase. -->
+          <goals>
+            <goal>single</goal> <!-- goals == mojos -->
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
 </build>
 
 </project>
