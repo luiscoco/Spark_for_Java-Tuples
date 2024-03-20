@@ -40,11 +40,13 @@ Here's a brief overview of its components and what each part does:
 
 - Creates an RDD (originalIntegers) from the inputData list using the parallelize method. RDDs are Spark's core abstraction for working with distributed datasets
 
-- Transforms the originalIntegers RDD into another RDD (sqrtRdd) using the map operation. This transformation applies a function to each element of the original RDD, in this case, creating a tuple containing the original number and its square root
+- Transforms the originalIntegers RDD into another RDD (sqrtRdd) using the map operation
 
-Executes an action (foreach) to print the square root of each number. Actions in Spark trigger computations on the RDDs
+  This transformation applies a function to each element of the original RDD, in this case, creating a tuple containing the original number and its square root
 
-Finally, closes the Spark context (sc.close()), releasing the resources
+- Executes an action (foreach) to print the square root of each number. Actions in Spark trigger computations on the RDDs
+
+- Finally, closes the Spark context (sc.close()), releasing the resources
 
 In summary, this code demonstrates how to set up a basic Apache Spark application in Java, create an RDD from a collection, transform data within RDDs using map, and perform actions on RDDs
 
