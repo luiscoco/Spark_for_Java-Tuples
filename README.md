@@ -2,6 +2,20 @@
 
 ## 1. Introduction
 
+**Apache Spark** is a powerful, **distributed computing system** that allows for big data processing and analytics across clusters of computers
+
+It provides APIs in several programming languages, including **Java**
+
+In Spark, particularly when working with its **Resilient Distributed Dataset (RDD)** and **Dataset APIs**, tuples are a common data structure used to group elements
+
+Each element in a **tuple** can be of a different type, and tuples are immutable
+
+**Tuples** in **Java** are not as straightforward as in **Scala** or **Python**, given Java's static type system and lack of built-in support for tuples
+
+However, when working with Spark in Java, you can utilize the **scala.Tuple2**, **Tuple3**, ..., **Tuple22** classes provided by the Scala library for tuples with up to 22 elements
+
+These classes are fully interoperable with Java
+
 ## 2. Sample 1
 
 Run VSCode and create the following project structure
