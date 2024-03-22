@@ -20,7 +20,7 @@ These classes are fully interoperable with Java
 
 ## 2. Sample 1: Spark for Java (Tuples)
 
-This Java code uses Apache Spark, a powerful open-source processing framework for large data sets, to perform a simple map operation
+This Java code uses **Apache Spark**, a powerful open-source processing framework for large data sets, to perform a simple map operation
 
 Here's a brief overview of its components and what each part does:
 
