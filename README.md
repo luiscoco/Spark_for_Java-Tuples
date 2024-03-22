@@ -2,6 +2,10 @@
 
 Please also visit this URL for introducing you in Java Tuples: https://www.baeldung.com/java-tuples
 
+A **tuple** is a **collection** of several elements that may or may not be related to each other. In other words, tuples can be considered anonymous objects.
+
+For example, [“RAM”, 16, “Astra”] is a tuple containing three elements.
+
 ## 1. Introduction
 
 **Apache Spark** is a powerful, **distributed computing system** that allows for big data processing and analytics across clusters of computers
