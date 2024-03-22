@@ -371,56 +371,57 @@ public class Main {
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.12</artifactId>
-            <version>3.1.2</version> <!-- Use the version suitable for your project -->
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.12</artifactId>
-            <version>3.1.2</version> <!-- Use the version suitable for your project -->
-        </dependency>
-    </dependencies>
-<build>
-  <plugins>
-    <plugin>
-      <!-- Add maven assembly plugin to create a fat jar including all dependencies -->
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>com.example.Main</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-      </configuration>
-      <executions>
-        <execution>
-          <id>make-assembly</id> <!-- this is used for inheritance merges -->
-          <phase>package</phase> <!-- append to the packaging phase. -->
-          <goals>
-            <goal>single</goal> <!-- goals == mojos -->
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-  </plugins>
-</build>
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-core_2.12</artifactId>
+		    <version>3.1.2</version> <!-- Use the version suitable for your project -->
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-sql_2.12</artifactId>
+		    <version>3.1.2</version> <!-- Use the version suitable for your project -->
+		</dependency>
+	</dependencies>
+	<build>
+	  <plugins>
+	    <plugin>
+	      <!-- Add maven assembly plugin to create a fat jar including all dependencies -->
+	      <artifactId>maven-assembly-plugin</artifactId>
+	      <configuration>
+		<archive>
+		  <manifest>
+		    <mainClass>com.example.Main</mainClass>
+		  </manifest>
+		</archive>
+		<descriptorRefs>
+		  <descriptorRef>jar-with-dependencies</descriptorRef>
+		</descriptorRefs>
+	      </configuration>
+	      <executions>
+		<execution>
+		  <id>make-assembly</id> <!-- this is used for inheritance merges -->
+		  <phase>package</phase> <!-- append to the packaging phase. -->
+		  <goals>
+		    <goal>single</goal> <!-- goals == mojos -->
+		  </goals>
+		</execution>
+	      </executions>
+	    </plugin>
+	  </plugins>
+	</build>
 
 </project>
 ```
