@@ -1,5 +1,7 @@
 # Spark for Java: Tuples
 
+Please also visit this URL for introducing you in Java Tuples: https://www.baeldung.com/java-tuples
+
 ## 1. Introduction
 
 **Apache Spark** is a powerful, **distributed computing system** that allows for big data processing and analytics across clusters of computers
