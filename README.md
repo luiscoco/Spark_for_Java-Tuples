@@ -1,5 +1,7 @@
 # Spark for Java: Tuples
 
+See this Udemy course: https://www.udemy.com/course/apache-spark-for-java-developers
+
 Please also visit this URL for introducing you in Java Tuples: https://www.baeldung.com/java-tuples
 
 A **tuple** is a **collection** of several elements that may or may not be related to each other. In other words, tuples can be considered anonymous objects.
